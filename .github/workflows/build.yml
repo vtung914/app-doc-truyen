@@ -25,6 +25,12 @@ jobs:
       - name: Install Ninja Build
         run: sudo apt-get install -y ninja-build
 
+      - name: Create Flet App Config
+        run: |
+          echo '[tool.flet]' > pyproject.toml
+          echo 'app_title = "App Doc Truyen"' >> pyproject.toml
+          echo 'package_name = "com.vtung.audiosach"' >> pyproject.toml
+
       - name: Build APK
         run: flet build apk
 
