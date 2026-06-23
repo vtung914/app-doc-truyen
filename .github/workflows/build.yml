@@ -30,7 +30,6 @@ jobs:
           echo '[tool.flet]' > pyproject.toml
           echo 'app_title = "App Doc Truyen"' >> pyproject.toml
           echo 'package_name = "com.vtung.audiosach"' >> pyproject.toml
-          # DÒNG QUAN TRỌNG: Khai báo để đóng gói pypdf vào bên trong file APK
           echo 'dependencies = ["pypdf"]' >> pyproject.toml
 
       - name: Build APK
