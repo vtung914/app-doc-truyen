@@ -6,7 +6,7 @@ import asyncio
 async def main(page: ft.Page):
     page.title = "App Đọc Truyện Audio PDF"
     page.theme_mode = ft.ThemeMode.DARK
-    page.scroll = ft.ScrollMode.AUTO # Cho phép cuộn màn hình nếu truyện dài
+    page.scroll = ft.ScrollMode.AUTO
 
     # Biến lưu trữ dữ liệu
     file_path_ref = ft.Ref[ft.Text]()
@@ -14,10 +14,10 @@ async def main(page: ft.Page):
     txt_ket_thuc = ft.TextField(label="Trang Kết Thúc", value="5", keyboard_type=ft.KeyboardType.NUMBER, width=100)
     lbl_status = ft.Text(value="Chưa chọn file truyện", color="blue200")
     
-    # Khu vực hiển thị nội dung truyện để người dùng đọc theo
+    # Khu vực hiển thị nội dung truyện
     txt_noi_dung_truyen = ft.Text(value="", size=16, color="white", selectable=True)
 
-    # Thanh chỉnh tốc độ đọc (Mặc định là 1.0 - Bình thường)
+    # Thanh chỉnh tốc độ đọc (Mặc định là 1.0)
     slider_toc_do = ft.Slider(min=0.5, max=2.0, divisions=6, label="{value}x", value=1.0)
 
     # Hàm xử lý khi chọn file PDF xong
@@ -78,7 +78,7 @@ async def main(page: ft.Page):
                 pass
                 
             page.tts.text = van_ban
-            page.tts.rate = float(slider_toc_do.value) # Gán tốc độ từ thanh trượt vào hệ thống
+            page.tts.rate = float(slider_toc_do.value)
             await page.tts.speak()
 
         except Exception as ex:
